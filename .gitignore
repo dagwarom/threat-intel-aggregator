@@ -1,9 +1,8 @@
-venv/
 .env
-__pycache__/
-*.pyc
+.env.local
 node_modules/
 build/
 dist/
+build-verify*/
 *.zip
-repcdorts/
+reports/

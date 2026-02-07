@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Threat Intel Dashboard - Hacker theme"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Hacker-style monospace font -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <title>Threat Intel Dashboard</title>
+    <style>
+      /* Ensure canvas sits behind the app */
+      html, body, #root { height: 100%; margin: 0; }
+      body { background: #050607; }
+      canvas#matrix { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.12; }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- Matrix animation canvas (background) -->
+    <canvas id="matrix"></canvas>
+
+    <div id="root"></div>
+
+    <!-- Matrix animation script (self-contained, no external deps) -->
+    <script>
+      (function matrixBackground() {
+        const canvas = document.getElementById('matrix');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width = innerWidth;
+        let h = canvas.height = innerHeight;
+        const letters = "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏﾐｶｴｽｭｬｭｭﾚﾓﾗﾉﾑｦﾝ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        const fontSize = 14;
+        const columns = Math.floor(w / fontSize);
+        const drops = [];
+        for (let i = 0; i < columns; i++) drops[i] = Math.random() * h;
+
+        function draw() {
+          ctx.fillStyle = 'rgba(5,6,7,0.08)';
+          ctx.fillRect(0, 0, w, h);
+          ctx.font = fontSize + "px Source Code Pro, monospace";
+          for (let i = 0; i < drops.length; i++) {
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+            ctx.fillStyle = 'rgba(0,255,102,' + (Math.random()*0.6+0.2) + ')';
+            ctx.fillText(text, x, y);
+            if (y > h && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+          }
+        }
+
+        let raf;
+        function loop() {
+          draw();
+          raf = requestAnimationFrame(loop);
+        }
+
+        function resize() {
+          cancelAnimationFrame(raf);
+          w = canvas.width = innerWidth;
+          h = canvas.height = innerHeight;
+          const cols = Math.floor(w / fontSize);
+          drops.length = cols;
+          for (let i = 0; i < drops.length; i++) {
+            if (!drops[i]) drops[i] = Math.random() * h;
+          }
+          loop();
+        }
+
+        window.addEventListener('resize', resize);
+        loop();
+      })();
+    </script>
+  </body>
+</html>
