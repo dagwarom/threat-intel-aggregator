@@ -1,3 +1,11 @@
+/* ROOT */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: black;
+}
+
 /* APP WRAPPER */
 .app-shell {
   min-height: 100vh;
@@ -6,56 +14,16 @@
 }
 
 /* MAIN CONTENT */
-.main-layout {
-  flex: 1;
+.content {
+  flex: 1;          /* 🔥 THIS IS THE KEY */
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  flex-direction: column;
 }
 
-/* PANELS */
+/* PANEL */
 .panel {
-  flex: 2;
-}
-
-.side {
-  flex: 1;
-}
-
-/* HEADER */
-.header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.header img {
-  height: 70px;
-}
-
-/* INPUT */
-.input-row {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-input {
-  flex: 1;
-  padding: 10px;
-}
-
-button {
-  padding: 10px 16px;
-  cursor: pointer;
-}
-
-/* CARDS */
-.card {
-  background: #111;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 6px;
+  padding: 30px;
+  color: #00ff88;
 }
 
 /* FOOTER */
@@ -63,19 +31,6 @@ button {
   text-align: center;
   padding: 15px;
   font-size: 14px;
-  opacity: 0.8;
-}
-
-/* BADGES */
-.badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-/* MOBILE FIX */
-@media (max-width: 768px) {
-  .main-layout {
-    flex-direction: column;
-  }
+  color: #00ff88;
+  border-top: 1px solid rgba(0,255,136,0.2);
 }
