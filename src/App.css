@@ -1,4 +1,4 @@
-/* GLOBAL RESET */
+/* 1. Global Reset */
 * {
   box-sizing: border-box;
 }
@@ -6,53 +6,78 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%; /* Full screen height allow karta hai */
+  height: 100%;
   background: #000;
-  color: #00ff9c; /* Default green color */
-  font-family: 'Courier New', Courier, monospace; /* Cyber look */
+  color: #00ff9c;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* MAIN WRAPPER */
+/* 2. Main Wrapper */
 .app-shell {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Poori mobile/desktop screen cover karega */
+  min-height: 100vh;
 }
 
-/* CONTENT WRAPPER - Ye footer ko niche dhakelta hai */
+/* 3. Responsive Layout Engine */
 .main-content {
-  flex: 1 0 auto; /* Ye bachi hui saari jagah le lega */
+  flex: 1 0 auto;
   display: flex;
-  flex-direction: column; /* Mobile ke liye column layout */
-}
-
-/* Desktop layout ke liye (optional) */
-@media (min-width: 769px) {
-  .main-content {
-    flex-direction: row; /* Desktop pe side-by-side dikhega */
-  }
-}
-
-.panel, .side {
+  flex-wrap: wrap; /* Mobile par niche bhejne ke liye */
+  gap: 20px;
   padding: 20px;
-}
-
-/* FOOTER - Ab ye hamesha bottom par rahega */
-.footer {
-  flex-shrink: 0; /* Isse footer compress nahi hoga */
-  text-align: center;
-  padding: 20px 10px;
-  font-size: 14px;
-  color: #00ff9c;
-  background: rgba(0, 0, 0, 0.8);
-  border-top: 1px solid rgba(0, 255, 136, 0.2);
+  max-width: 1400px; /* Laptop par zyada na faile */
+  margin: 0 auto; /* Center alignment */
   width: 100%;
 }
 
-/* Result cards styling for better look */
+/* 4. Left Panel (Investigation area) */
+.panel {
+  flex: 2; /* Laptop par zyada jagah lega */
+  min-width: 350px; /* Mobile par width adjust karega */
+  padding: 20px;
+}
+
+/* 5. Right Panel (News & Links) */
+.side {
+  flex: 1; /* Laptop par kam jagah lega */
+  min-width: 300px;
+  padding: 20px;
+  border-left: 1px solid rgba(0, 255, 156, 0.1); /* Subtle partition */
+}
+
+/* 6. Footer - Always at the bottom */
+.footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #00ff9c;
+  border-top: 1px solid rgba(0, 255, 136, 0.2);
+  background: #000;
+}
+
+/* --- Mobile Specific Fixes --- */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column; /* Mobile par sab ek ke niche ek */
+    padding: 10px;
+  }
+  
+  .side {
+    border-left: none;
+    border-top: 1px solid rgba(0, 255, 156, 0.1);
+  }
+
+  h1 { font-size: 28px !important; }
+}
+
+/* Result Cards styling for laptop */
 .result-card {
+  background: rgba(0, 255, 156, 0.05);
   border: 1px solid #00ff9c;
-  margin-top: 15px;
   padding: 15px;
+  margin-bottom: 15px;
   border-radius: 8px;
 }
