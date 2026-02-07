@@ -34,3 +34,45 @@ html, body {
   color: #00ff88;
   border-top: 1px solid rgba(0,255,136,0.2);
 }
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000;
+}
+
+/* MAIN APP WRAPPER */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CONTENT AREA */
+.panel,
+.side {
+  padding: 20px;
+}
+
+/* FOOTER — ALWAYS AT BOTTOM */
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 16px 10px;
+  font-size: 14px;
+  color: #00ff9c;
+  background: transparent;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .panel,
+  .side {
+    padding-bottom: 30px;
+  }
+}
