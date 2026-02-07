@@ -169,8 +169,12 @@ def get_news():
         except Exception as e:
             articles.append({"title": f"Failed to fetch {url}", "link": "#", "source": "error"})
     return jsonify(articles)
+@app.route("/")
+def home():
+    return {"status": "Threat Intel Aggregator API is live"}
 
 # ------------------ Run Server ------------------
 if __name__ == "__main__":
     print("✅ Backend running at http://127.0.0.1:5000")
     app.run(debug=True, port=5000)
+
