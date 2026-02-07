@@ -61,3 +61,27 @@
     font-size: 14px;
   }
 }
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel,
+.side {
+  flex: 1;
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+  color: #aaa;
+  background: #0f0f0f;
+}
