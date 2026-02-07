@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+/* ===== Layout Fix ===== */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* main content area */
+.panel {
+  flex: 1;
+}
+
+/* footer always bottom */
+.footer {
+  margin-top: auto;
+  padding: 16px;
+  text-align: center;
+}
+
+/* mobile polish */
+@media (max-width: 768px) {
+  .footer {
+    font-size: 14px;
+  }
+}
