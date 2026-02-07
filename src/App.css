@@ -3,13 +3,13 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,body {
   margin: 0;
   padding: 0;
-  height: 100%;
   background: #000;
   color: #00ff9c;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Yahan font family change karein */
+  font-family: 'JetBrains Mono', monospace, Tahoma, Geneva, Verdana, sans-serif; 
 }
 
 /* 2. Main Wrapper */
