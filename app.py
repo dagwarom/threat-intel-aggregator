@@ -49,7 +49,12 @@ def check_ioc():
         return jsonify({"error": "No IOC provided"}), 400
 
     ioc_type = detect_ioc_type(ioc)
-
+    # ✅ NEW: IOC Validation
+if ioc_type == "unknown":
+    return jsonify({
+        "error": "Invalid IOC format. Enter valid IP, Domain, URL or Hash."
+    }), 400
+    
     result = {
         "ioc": ioc,
         "type": ioc_type,
