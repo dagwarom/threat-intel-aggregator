@@ -54,7 +54,7 @@ if ioc_type == "unknown":
     return jsonify({
         "error": "Invalid IOC format. Enter valid IP, Domain, URL or Hash."
     }), 400
-    
+            
     result = {
         "ioc": ioc,
         "type": ioc_type,
