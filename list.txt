@@ -1,0 +1,1 @@
+{"iocs":["8.8.8.8","google.com","44d88612fea8a8f36de82e1278abb02f","example.com","1.1.1.1"]}

@@ -1,0 +1,48 @@
+﻿Windows DFIR Offline Log Triage Summary
+Generated: 2026-04-24 02.07.55
+Computer: DESKTOP-G8U5C6E
+Run as Administrator: True
+Mode: Full
+Date range: 2026-04-22 through 2026-04-23
+Total elapsed time: 14:05
+
+Output folders:
+Raw: C:\Users\Omsai\Downloads\Windows Security Logs Exporter\Windows Security Logs Exporter\Output\Raw
+Filtered: C:\Users\Omsai\Downloads\Windows Security Logs Exporter\Windows Security Logs Exporter\Output\Filtered
+Summary: C:\Users\Omsai\Downloads\Windows Security Logs Exporter\Windows Security Logs Exporter\Output\Summary
+
+Per-log-source results:
+- Security: events=31331, priority_events=867, collection_time=06:52, export_time=06:23, status=Completed
+- System: events=1016, priority_events=0, collection_time=00:01, export_time=00:00, status=Completed
+- Application: events=778, priority_events=0, collection_time=00:00, export_time=00:00, status=Completed
+- Microsoft-Windows-PowerShell/Operational: events=2894, priority_events=64, collection_time=00:12, export_time=00:12, status=Completed
+
+Prioritized DFIR event counts:
+- 4624 (Successful logon): 431
+- 4625 (Failed logon): 0
+- 4634 (Logoff): 56
+- 4647 (User initiated logoff): 1
+- 4672 (Special privileges assigned): 368
+- 4688 (Process creation): 11
+- 4720 (User account created): 0
+- 4722 (User account enabled): 0
+- 4723 (Password change attempted): 0
+- 4724 (Password reset attempted): 0
+- 7045 (Service installed): 0
+- 4104 (PowerShell script block logging): 64
+
+Full DFIR analysis timings:
+- DFIR filtering: 00:01
+- Suspicious process analysis: 00:00
+
+Suspicious process hits:
+- None found
+
+Warnings:
+- None
+
+Performance note:
+Raw export skips Message rendering and XML parsing for speed. Full DFIR mode performs deeper extraction only for priority event IDs.
+
+Analyst note:
+These exports are triage aids. Suspicious process names are not proof of compromise by themselves; correlate with parent process, user, host role, timestamps, and surrounding events.
