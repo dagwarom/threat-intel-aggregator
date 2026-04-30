@@ -1,6 +1,18 @@
-// src/api.js
-// Update API_BASE if your backend runs somewhere else
-export const API_BASE = "http://127.0.0.1:5000";
+export const API_BASE =
+  process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:5000";
+
+async function parseResponse(res) {
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    const message = data.error || "Request failed";
+    const error = new Error(message);
+    error.detail = data;
+    throw error;
+  }
+
+  return data;
+}
 
 export async function checkIOC(ioc) {
   const res = await fetch(`${API_BASE}/check`, {
@@ -8,15 +20,16 @@ export async function checkIOC(ioc) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ioc }),
   });
-  return res.json();
+
+  return parseResponse(res);
 }
 
-export async function bulkCheckFile(file) {
-  const form = new FormData();
-  form.append("file", file);
-  const res = await fetch(`${API_BASE}/bulk-check`, {
-    method: "POST",
-    body: form,
-  });
-  return res.json();
+export async function getNews() {
+  const res = await fetch(`${API_BASE}/news`);
+  return parseResponse(res);
+}
+
+export async function getIOCFeed() {
+  const res = await fetch(`${API_BASE}/ioc-feed`);
+  return parseResponse(res);
 }
