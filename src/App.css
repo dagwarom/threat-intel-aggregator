@@ -164,11 +164,9 @@ body {
 }
 
 .app-logo {
-  height: 60px;
-  object-fit: contain;
-  flex: 0 0 auto;
+  height: 90px;
   margin-bottom: 10px;
-  filter: drop-shadow(0 0 14px rgba(111, 210, 155, 0.2));
+  filter: drop-shadow(0 0 6px rgba(0,255,150,0.4));
 }
 
 .brand-copy {
