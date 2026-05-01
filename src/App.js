@@ -668,7 +668,7 @@ function App() {
     <div className="app-shell">
       <header className="app-header">
         <div className="header-flex">
-          <img src="/logo.png" alt="Logo" className="brand-logo" />
+          <img src="/logo.png" alt="Threat Intel Aggregator" className="app-logo" />
           <div className="brand-copy">
             <p className="eyebrow">Mini SOC + DFIR Dashboard</p>
             <h1 className="brand-title">Threat Intel Aggregator</h1>

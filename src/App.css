@@ -163,11 +163,11 @@ body {
   margin-bottom: 16px;
 }
 
-.brand-logo {
-  width: 118px;
-  height: 118px;
+.app-logo {
+  height: 60px;
   object-fit: contain;
   flex: 0 0 auto;
+  margin-bottom: 10px;
   filter: drop-shadow(0 0 14px rgba(111, 210, 155, 0.2));
 }
 
