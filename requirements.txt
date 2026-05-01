@@ -4,3 +4,5 @@ python-dotenv
 gunicorn
 flask-cors
 feedparser
+Flask-Limiter
+cachetools
