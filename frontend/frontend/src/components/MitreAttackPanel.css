@@ -1,0 +1,37 @@
+.mitre-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.mitre-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(111, 183, 214, 0.16);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.mitre-item span {
+  color: var(--secondary);
+  display: block;
+  font-size: 12px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.mitre-item strong {
+  color: var(--text-strong);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mitre-item small {
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mitre-item p {
+  color: var(--text);
+  line-height: 1.6;
+  margin: 0;
+}

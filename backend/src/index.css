@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #050708;
+  --panel: rgba(11, 15, 17, 0.88);
+  --panel-strong: rgba(14, 21, 24, 0.94);
+  --accent: #6fd29b;
+  --accent-muted: #4f9f78;
+  --secondary: #6fb7d6;
+  --text: #d8e2e5;
+  --text-strong: #f2f7f8;
+  --muted: #829096;
+  --border: rgba(132, 174, 158, 0.2);
+  --border-strong: rgba(111, 210, 155, 0.34);
+  --warning: #d8a84f;
+  --critical: #dd6b6b;
+  --glass: rgba(255, 255, 255, 0.035);
+  --glow: 0 14px 34px rgba(50, 113, 94, 0.16);
+  --neon: 0 0 18px rgba(111, 210, 155, 0.12);
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'IBM Plex Mono', monospace;
+  font-family: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(111, 183, 214, 0.08), transparent 26%),
+    radial-gradient(circle at 84% 8%, rgba(111, 210, 155, 0.06), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 24px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--text-strong);
+  letter-spacing: 0.035em;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 8px 0 14px;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+a {
+  color: var(--secondary);
+}
