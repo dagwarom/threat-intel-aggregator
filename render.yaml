@@ -1,0 +1,9 @@
+services:
+  - type: static_site
+    name: threat-intel-aggregator-frontend
+    rootDir: frontend/frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_BASE_URL
+        sync: false
