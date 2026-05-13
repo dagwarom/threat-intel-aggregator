@@ -97,9 +97,27 @@ def lookup_virustotal(ioc, ioc_type):
     if ioc_type == "email":
         return {"message": "No VirusTotal lookup available for email indicators"}
 
+<<<<<<< Updated upstream
     if not VT_API_KEY:
         app.logger.warning("VirusTotal lookup skipped because VT_API_KEY is not configured")
         return {"error": "VirusTotal API key is not configured"}
+=======
+    ioc_type = detect_ioc_type(ioc)
+    # ✅ NEW: IOC Validation
+    if ioc_type == "unknown":
+        return jsonify({
+            "error": "Invalid IOC format. Enter valid IP, Domain, URL or Hash."
+        }), 400
+            
+    result = {
+        "ioc": ioc,
+        "type": ioc_type,
+        "combined_risk": "Unknown",
+        "virustotal": None,
+        "abuseipdb": None,
+        "otx": None
+    }
+>>>>>>> Stashed changes
 
     try:
         if ioc_type == "ip":

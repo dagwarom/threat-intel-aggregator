@@ -23,4 +23,9 @@ build/
 dist/
 build-verify*/
 *.zip
+<<<<<<< Updated upstream
 reports/
+=======
+build/
+node_modules/
+>>>>>>> Stashed changes
