@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Backend Service
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This directory contains the Flask API for Threat Intel Aggregator. It powers IOC lookups, live feed aggregation, and security news retrieval for the dashboard.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- IOC type detection for IPs, domains, URLs, hashes, and emails.
+- Parallel enrichment across configured threat intelligence providers.
+- Risk scoring, verdict generation, and provider breakdown output.
+- Aggregated security news feed with caching.
+- Aggregated IOC feed with source status tracking.
+- CORS support for the frontend dashboard.
+- Basic request rate limiting.
 
-### `npm start`
+## Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Python 3.10+.
+- Packages listed in `requirements.txt`.
+- Optional provider API keys for external lookups.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Create and activate a virtual environment.
+2. Install dependencies with `pip install -r requirements.txt`.
+3. Configure the environment variables listed below.
+4. Start the API with `python app.py`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Environment Variables
 
-### `npm run build`
+- `VT_API_KEY` for VirusTotal.
+- `ABUSEIPDB_API_KEY` for AbuseIPDB.
+- `OTX_API_KEY` for AlienVault OTX.
+- `MALWAREBAZAAR_AUTH_KEY` for MalwareBazaar.
+- `THREATFOX_AUTH_KEY` for ThreatFox.
+- `URLHAUS_AUTH_KEY` for URLhaus.
+- `ALLOWED_ORIGINS` for the frontend CORS allow-list.
+- `REQUEST_TIMEOUT` for outbound HTTP timeout in seconds.
+- `NEWS_CACHE_SECONDS` for caching news and IOC feeds.
+- `RATELIMIT_STORAGE_URI` for the limiter storage backend.
+- `PORT` for the server port.
+- `FLASK_DEBUG` set to `1` to run in debug mode.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API Endpoints
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `POST /check` accepts `{ "ioc": "..." }` and returns scan results.
+- `GET /news` returns aggregated cyber news articles.
+- `GET /ioc-feed` returns live IOC feed items and source health.
+- `GET /` returns the API health response.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Example
 
-### `npm run eject`
+```bash
+curl -X POST http://127.0.0.1:5000/check ^
+  -H "Content-Type: application/json" ^
+  -d "{\"ioc\":\"8.8.8.8\"}"
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Notes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Missing provider keys do not break the service; the API returns the sources that are available.
+- Rate limiting and caching are already configured in code.
+- If you change the frontend origin, update `ALLOWED_ORIGINS` accordingly.
